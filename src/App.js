@@ -1,6 +1,9 @@
+import Smiles from './pages/smiles';
+
 function App() {
   return (
     <div>
+      <Smiles/>
     </div>
   );
 }
