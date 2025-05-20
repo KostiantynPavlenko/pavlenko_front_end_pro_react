@@ -1,5 +1,6 @@
 import React from "react";
 import SmilesList from "./components/List";
+import SmileWinner from "./components/Winner";
 
 import "./Smiles.css";
 
@@ -83,8 +84,14 @@ class Smiles extends React.Component {
         <SmilesList
           smiles={this.state.smiles}
           vote={this.smileVote}
-          clearVotes={this.clearVotes}
-          showWinner={this.showWinner}
+          winner={this.state.winner}/>
+
+        <div className="smiles-actions">
+          <button onClick={() => this.showWinner()}>Show winner</button>
+          <button onClick={() => this.clearVotes()}>Clear votes</button>
+        </div>
+
+        <SmileWinner
           winner={this.state.winner}/>
       </div>
     );

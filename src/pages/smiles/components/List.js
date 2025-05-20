@@ -6,7 +6,6 @@ class SmilesList extends React.Component {
 
   render() {
     const smiles = this.props.smiles;
-    const winner = this.props.winner;
     
     return (
       <div>
@@ -21,26 +20,6 @@ class SmilesList extends React.Component {
             />
           })}
         </div>
-
-        <div className="smiles-actions">
-          <button onClick={() => this.props.showWinner()}>Show winner</button>
-          <button onClick={() => this.props.clearVotes()}>Clear votes</button>
-        </div>
-
-        {
-          winner && (
-            <div>
-              <h3 className="winner-title">Winner</h3>
-              <div className="winner-container">
-                <SmileItem
-                  smile={winner.name}
-                  votes={winner.votes}
-                  vote={() => {}}
-                />
-              </div>
-            </div>
-          )
-        }
       </div>
     )
   }
