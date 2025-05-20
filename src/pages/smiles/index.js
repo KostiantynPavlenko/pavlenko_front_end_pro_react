@@ -1,38 +1,30 @@
-import React from "react";
+import { useEffect, useState } from "react";
 import SmilesList from "./components/List";
 import SmileWinner from "./components/Winner";
 
 import "./Smiles.css";
 
-class Smiles extends React.Component {
+export default function Smiles() {
 
-  constructor(props) {
-    super(props);
+  const [smiles, setSmiles] = useState([
+      { id: 0, name: '😊', votes: 0 },
+      { id: 1, name: '😢', votes: 0 },
+      { id: 2, name: '😠', votes: 0 },
+      { id: 3, name: '❤️', votes: 0 },
+      { id: 4, name: '😲', votes: 0 }
+  ]);
+  const [winner, setWinner] = useState(null);
 
-    this.state = {
-      smiles: [
-        { id: 0, name: '😊', votes: 0 },
-        { id: 1, name: '😢', votes: 0 },
-        { id: 2, name: '😠', votes: 0 },
-        { id: 3, name: '❤️', votes: 0 },
-        { id: 4, name: '😲', votes: 0 }
-      ],
-      winner: null
-    }
-  }
-
-  componentDidMount() {
+  useEffect(() => {
     const smilesInfo = localStorage.getItem('smiles');
 
     if(smilesInfo) {
-      this.setState({
-        smiles: JSON.parse(smilesInfo)
-      });
+      setSmiles(JSON.parse(smilesInfo))
     }
-  }
+  }, []);
 
-  smileVote = (id) => {    
-    const updatedSmiles = this.state.smiles.map(smile => {
+  const smileVote = (id) => {    
+    const updatedSmiles = smiles.map(smile => {
       if(smile.id === id) {
         return { ...smile, votes: smile.votes + 1 };
       }
@@ -40,28 +32,24 @@ class Smiles extends React.Component {
       return smile;
     });
 
-    this.setState({
-      smiles: updatedSmiles
-    });
+    setSmiles(updatedSmiles);
 
     localStorage.setItem('smiles', JSON.stringify(updatedSmiles));
   }
 
-  clearVotes = () => {
-    const updatedSmiles = this.state.smiles.map(smile => {
+  const clearVotes = () => {
+    const updatedSmiles = smiles.map(smile => {
       return { ...smile, votes: 0};
     });
 
-    this.setState({
-      smiles: updatedSmiles,
-      winner: null
-    })
+    setSmiles(updatedSmiles);
+    setWinner(null);
 
     localStorage.setItem('smiles', JSON.stringify(updatedSmiles));
   }
 
-  showWinner = () => {
-    let winner = this.state.smiles.reduce((acc, smile) => {
+  const showWinner = () => {
+    let winner = smiles.reduce((acc, smile) => {
       if (smile.votes > acc.votes) {
         acc = smile;
       }
@@ -73,31 +61,24 @@ class Smiles extends React.Component {
       winner = null;
     }
 
-    this.setState({
-      winner
-    })
+    setWinner(winner);
   }
 
-  render() {
-    return (
-      <div>
-        <SmilesList
-          smiles={this.state.smiles}
-          vote={this.smileVote}
-          winner={this.state.winner}/>
+  return (
+    <div>
+      <SmilesList
+        smiles={smiles}
+        vote={smileVote}
+        winner={winner}/>
 
-        <div className="smiles-actions">
-          <button onClick={() => this.showWinner()}>Show winner</button>
-          <button onClick={() => this.clearVotes()}>Clear votes</button>
-        </div>
-
-        <SmileWinner
-          winner={this.state.winner}/>
+      <div className="smiles-actions">
+        <button onClick={() => showWinner()}>Show winner</button>
+        <button onClick={() => clearVotes()}>Clear votes</button>
       </div>
-    );
-  }
 
+      <SmileWinner
+        winner={winner}/>
+    </div>
+  );
 
 }
-
-export default Smiles;
