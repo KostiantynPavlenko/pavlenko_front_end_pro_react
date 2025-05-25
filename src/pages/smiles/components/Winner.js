@@ -1,6 +1,11 @@
+import { useContext } from "react";
 import SmileItem from "./Item";
 
-export default function SmileWinner({winner}){
+import { SmileContext } from "../../../contexts/SmilesContext";
+
+export default function SmileWinner(){
+
+  const { winner } = useContext(SmileContext);
 
   return (
     <div>

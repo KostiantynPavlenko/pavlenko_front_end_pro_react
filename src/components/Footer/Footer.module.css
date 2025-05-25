@@ -1,0 +1,15 @@
+.footer {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px 40px;
+}
+
+.mode-light {
+  background-color: rgb(255, 205, 139);
+}
+
+.mode-dark {
+  background-color: rgb(255, 156, 126);
+}

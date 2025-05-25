@@ -1,0 +1,26 @@
+.header {
+  position: relative;
+  display: flex;
+  align-items: center;
+  padding: 20px 40px;
+}
+
+.mode-light {
+  background-color: antiquewhite;
+}
+
+.mode-dark {
+  background-color: rgb(255, 151, 65);
+}
+
+.header__navigation {
+  display: flex;
+  width: 100%;
+  justify-content: center;
+  column-gap: 20px;
+}
+
+.change-theme-button {
+  position: absolute;
+  right: 40px;
+}

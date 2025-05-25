@@ -1,5 +1,5 @@
-export default function SmileItem({ smile, votes, vote }) {
-    
+export default function SmileItem({ smile, vote, votes }) {
+  
   return (
     <div className="smile-container">
       <div 
