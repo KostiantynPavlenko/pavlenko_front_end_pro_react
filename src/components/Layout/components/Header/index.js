@@ -1,6 +1,7 @@
 import { useContext } from "react";
+import { NavLink } from "react-router";
 
-import { ThemeContext } from "../../contexts/ThemeContext";
+import { ThemeContext } from "../../../../contexts/ThemeContext";
 
 import styles from './Header.module.css'
 
@@ -11,10 +12,10 @@ export default function Header() {
   return (
     <div className={`${styles.header} ${styles[`mode-${theme}`]}`}>
       <nav className={styles.header__navigation}>
-        <div>Main</div>
-        <div>Contacts</div>
-        <div>About</div>
-        <div>Todo</div>
+        <NavLink to="/">Main</NavLink>
+        <NavLink to="/contacts">Contacts</NavLink>
+        <NavLink to="/about">About</NavLink>
+        <NavLink to="/todo">Todo</NavLink>
       </nav>
       <button className={styles['change-theme-button']} onClick={toggleTheme}>Toggle Theme</button>
     </div>

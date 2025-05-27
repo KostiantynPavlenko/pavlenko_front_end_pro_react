@@ -1,6 +1,6 @@
 import { useContext } from "react";
 
-import { ThemeContext } from "../../contexts/ThemeContext";
+import { ThemeContext } from "../../../../contexts/ThemeContext";
 
 import styles from './Footer.module.css'
 

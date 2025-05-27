@@ -5,6 +5,11 @@
   padding: 20px 40px;
 }
 
+.header__navigation > a {
+  color: #000;
+  text-decoration: none;
+}
+
 .mode-light {
   background-color: antiquewhite;
 }
