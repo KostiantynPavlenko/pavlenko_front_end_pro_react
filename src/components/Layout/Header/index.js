@@ -13,7 +13,7 @@ export default function Header() {
 
   return (
     <>
-      <AppBar position="static" sx={{height: '60px'}}>
+      <AppBar position="static" sx={{py: { xs: 2, sm: 2 }}}>
         <Container sx={{display: 'flex', alignItems: 'center', height: '100%'}}>
           <Box sx={{ display: 'flex', justifyContent: 'center', width: '100%', gap: 8}}>
             <Button 
