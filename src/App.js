@@ -1,7 +1,28 @@
+import { createBrowserRouter, RouterProvider } from "react-router";
+import Layout from "./components/Layout";
+import Home from "./pages/Home";
+import Experience from "./pages/Experience";
+
+const router = createBrowserRouter([
+  {
+    path: '/',
+    element: <Layout />,
+    children: [
+      {
+        index: true,
+        element: <Home />
+      },
+      {
+        path: 'Experience',
+        element: <Experience />
+      },
+    ]
+  }
+])
+
 function App() {
   return (
-    <div>
-    </div>
+    <RouterProvider router={router} />
   );
 }
 

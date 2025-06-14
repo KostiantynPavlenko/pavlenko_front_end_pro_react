@@ -1,0 +1,8 @@
+.skill-list {
+  list-style-type: "-";
+  padding-left: 12px;
+}
+
+.skill-list li {
+  padding-left: 4px;
+}
